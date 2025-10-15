@@ -54,6 +54,7 @@ def predict():
 
 @app.route('/show-result')
 def show_result():
+    # comme
     records = requests.get(DB_SERVICE_URL)
     print("records", records.json())
     return render_template('show-result.html', records=records.json())
