@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'local'
-            customWorkspace "C:/Rudra/College/SEM VII/MAP/Practicals/Jenkins"
-        }
-    }
+    agent any
     
     stages {
         stage('Build Images') {
