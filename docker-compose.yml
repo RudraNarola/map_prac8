@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  webapp:
+    build:
+      context: ./web_service
+    image: webapp
+    container_name: webapp_container
+    depends_on:
+      - dbapp
+    environment:
+      - DB_SERVICE_URL=http://dbapp_container:5001/record
+    ports:
+      - "5000:5000"
+    networks:
+      - iris_net
+
+  dbapp:
+    build:
+      context: ./db_service
+    image: dbapp
+    container_name: dbapp_container
+    ports:
+      - "5001:5001"
+    networks:
+      - iris_net
+
+networks:
+  iris_net:
